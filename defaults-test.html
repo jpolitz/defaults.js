@@ -45,6 +45,7 @@ var logD2 = D2(
     return Math.log(x) / Math.log(base);
   });
 
+
 console.log('f() should give 1: ', f());
 console.log('f({n1:2}) should give 3: ', f({n1:2}));
 console.log('f({n2:37}) should give 37: ', f({n2:37}));
@@ -76,6 +77,20 @@ try {
 try {
   console.log('log("foo") should give an error: ');
   log("foo");
+} catch(e) {
+  console.log('Error: ', e);
+}
+
+try {
+  console.log('D([], function(x) {}) should give an error.');
+  D([], function(x) {});
+} catch(e) {
+  console.log('Error: ', e);
+}
+
+try {
+  console.log('D([2], function() {}) should give an error.');
+  D([2], function() {});
 } catch(e) {
   console.log('Error: ', e);
 }

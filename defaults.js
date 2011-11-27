@@ -16,6 +16,10 @@ limitations under the License.
 var defaults = (function() {
   var required={};
   function D(defaults, f) {
+    if (defaults.length !== f.length) {
+      throw new TypeError(defaults.length + ' defaults supplied, but ' +
+        'function has ' + f.length + ' parameters.');
+    }
     var g = function(options) {
       if (typeof options === 'undefined' || options === null) { options = {}; }
       if (typeof options !== 'object') {
