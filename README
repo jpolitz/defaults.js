@@ -20,8 +20,8 @@ Definition:
 Invocation:
 
     log({ x: Math.E }) == 1;
-    log({ base: 8, x: 2}) == 3;
-    log({ x: 2, base: 8}) == 3;
+    log({ base: 2, x: 8}) == 3;
+    log({ x: 8, base: 2}) == 3;
     log({ base: 2 }); // TypeError: Missing required keyword argument x
 
 The raw function is accessible and does no checking:
