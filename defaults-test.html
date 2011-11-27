@@ -72,6 +72,14 @@ try {
 } catch(e) {
   console.log('Error: ', e);
 }
+
+try {
+  console.log('log("foo") should give an error: ');
+  log("foo");
+} catch(e) {
+  console.log('Error: ', e);
+}
+
 </script>
 
 <body>

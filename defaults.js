@@ -17,7 +17,10 @@ var defaults = (function() {
   var required={};
   function D(defaults, f) {
     var g = function(options) {
-      if (typeof options !== 'object' || options === null) { options = {}; }
+      if (typeof options === 'undefined' || options === null) { options = {}; }
+      if (typeof options !== 'object') {
+        throw new TypeError("Bad invocation options: " + String(options));
+      }
       var args = defaults.map(function(keyval) {
         var key = Object.keys(keyval)[0];
         if (options.hasOwnProperty(key)) {
@@ -58,11 +61,11 @@ var defaults = (function() {
     return D(defaultDict, f);
   }
   
-  return Object.freeze({
+  return {
     D: D,
     D2: D2,
     __: required
-  });
+  };
 })();
 
 var __ = defaults.__;

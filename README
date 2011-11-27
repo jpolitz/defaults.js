@@ -1,0 +1,31 @@
+defaults.js
+
+Keyword arguments with defaults/requirements for JavaScript functions.
+
+No compilation or desugaring required, just a stylized wrapper.
+
+Definition:
+
+    var log = D([
+        { base: Math.E },
+        { x: __ }],
+      function(base, x) { return Math.log(x) / Math.log(base); });
+
+  Or:
+
+    var log = D2(
+              [Math.E, __],
+      function(  base,  x) { return Math.log(x) / Math.log(base); });
+
+Invocation:
+
+    log({ x: Math.E }) == 1;
+    log({ base: 8, x: 2}) == 3;
+    log({ x: 2, base: 8}) == 3;
+    log({ base: 2 }); // TypeError: Missing required keyword argument x
+
+The raw function is accessible and does no checking:
+
+    log.direct(2, 8) == 3;
+    log.direct() == NaN;
+
