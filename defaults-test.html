@@ -1,0 +1,81 @@
+<!--
+Copyright 2011 Joe Gibbs Politz. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<!DOCTYPE html>
+<html>
+<script src='defaults.js'></script>
+<script>
+var f = D([
+    {n1: 0},
+    {n2: 1}
+  ],
+  function(n1, n2) {
+    return n1 + n2;
+  });
+
+var g = D2(
+          [0,  1],
+  function(n1, n2) { return n1 + n2; }
+);
+
+var log = D([
+    { base: Math.E },
+    { x: __ }],
+  function(base, x) {
+    return Math.log(x) / Math.log(base);
+  }
+);
+
+var logD2 = D2(
+          [Math.E, __],
+  function(  base,  x) {
+    return Math.log(x) / Math.log(base);
+  });
+
+console.log('f() should give 1: ', f());
+console.log('f({n1:2}) should give 3: ', f({n1:2}));
+console.log('f({n2:37}) should give 37: ', f({n2:37}));
+console.log('f({n1:2,n2:37}) should give 39: ', f({n1:2,n2:37}));
+
+console.log('g() should give 1: ', g());
+console.log('g({n1:2}) should give 3: ', g({n1:2}));
+console.log('g({n2:37}) should give 37: ', g({n2:37}));
+console.log('g({n1:2,n2:37}) should give 39: ', f({n1:2,n2:37}));
+
+console.log('log({x: Math.E}) should give 1: ', log({x: Math.E}));
+console.log('log({x: 8, base: 2}) should give 3: ', log({x: 8, base: 2}));
+try {
+  console.log('log({base: 2}) should give an error: ');
+  log({base: 2});
+} catch(e) {
+  console.log('Error: ', e);
+}
+
+console.log('logD2({x: Math.E}) should give 1: ', logD2({x: Math.E}));
+console.log('logD2({x: 8, base: 2}) should give 3: ', logD2({x: 8, base: 2}));
+try {
+  console.log('logD2({base: 2}) should give an error: ');
+  logD2({base: 2});
+} catch(e) {
+  console.log('Error: ', e);
+}
+</script>
+
+<body>
+
+</body>
+
+</html>
